@@ -1,0 +1,53 @@
+<body>
+    
+    <script>
+        const value = "With a canon that delves into the human condition during the Spanish Civil War,Ernest Hemingway is a go-to in most literary circles.His short story The Old Man at the Bridge focuses on an old man sitting at the side of a country road during the war.The man has already traveled 12kilometers to flee the area,but is too distracted and exhausted to continue";
+        const words = (value)=>{
+    
+            let withNoDigits = value.replace(/[0-9]/g, '');
+
+            let withoutBrackets = withNoDigits.replace(/[{()}]/g, '')
+
+            let regex = /[.,\s]/g;
+    
+            let noSymbole = withoutBrackets.replace(regex, ' ');
+            
+            let lowerCase = noSymbole.toLowerCase();
+            
+            let result= lowerCase.split(' ')
+    
+            return result;
+        } 
+        
+        
+        var wordArray = words(value);// this is an array its contain words without symboles
+
+
+
+        const wordCountFunction = (wordArray) =>{
+            let wordSet = new Set(wordArray)
+            console.log(wordSet.size)
+            let words = [...wordSet]
+            
+            
+            let wordCount = {}
+            words.forEach(item => {
+                if(wordCount[item] == null){
+                    wordCount[item] = 1;
+                }
+                else{
+                    wordCount[item] += 1;
+                }
+            });
+            
+            return wordCount;
+        }
+
+      
+
+        console.log(wordCountFunction(wordArray));
+        
+
+    </script>
+
+</body>
